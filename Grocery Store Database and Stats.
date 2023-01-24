@@ -1,0 +1,13 @@
+create table grocerystore (id integer primary key, name text,price integer, quantity integer, aisle integer);
+
+insert into grocerystore values (1, "Rice",5.99, 1, 14);
+insert into grocerystore values (2, "Cheese", 5, 2, 19);
+insert into grocerystore values (3, "Corn",3.50, 2, 14);
+insert into grocerystore values (4, "Steak", 12.89, 2, 8);
+insert into grocerystore values (5, "Kimchi", 8.99, 1, 10);
+
+select * from grocerystore order by aisle;
+
+select name, quantity from grocerystore group by name;
+
+select sum(price) from grocerystore;
