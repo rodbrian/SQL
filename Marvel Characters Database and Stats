@@ -1,3 +1,5 @@
+#In this SQL, I've created a data set with Marvel characters to quantify statistics about their characters and abilities.
+
 CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
     name TEXT,
     popularity INTEGER,
