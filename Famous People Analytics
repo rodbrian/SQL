@@ -1,4 +1,4 @@
-#In this SQL, I'm using a small set of "famous people, then making a table about things they do and joining to crate a readable list.
+#In this SQL, I'm using a small set of "famous people, then making a table about things they do and joining to create a readable list.
 
 CREATE TABLE billionares (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
