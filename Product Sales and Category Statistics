@@ -1,0 +1,30 @@
+#In this SQL, I have created a querty that uses two CTEs, product_stats and category_stats, to calculate intermediate results and simplify the final query. The result is a table that displays the category, total units sold, total revenue, average price, and average revenue per unit, ordered by total revenue in descending order.
+
+WITH product_stats AS (
+  SELECT
+    product_id,
+    SUM(units_sold) AS units_sold,
+    SUM(units_sold * price) AS revenue,
+    AVG(price) AS avg_price
+  FROM orders
+  JOIN products ON orders.product_id = products.product_id
+  GROUP BY product_id
+),
+category_stats AS (
+  SELECT
+    category,
+    SUM(units_sold) AS units_sold,
+    SUM(revenue) AS revenue,
+    AVG(avg_price) AS avg_price
+  FROM product_stats
+  JOIN categories ON product_stats.product_id = categories.product_id
+  GROUP BY category
+)
+SELECT
+  category,
+  units_sold,
+  revenue,
+  avg_price,
+  revenue / units_sold AS avg_revenue_per_unit
+FROM category_stats
+ORDER BY revenue DESC;
