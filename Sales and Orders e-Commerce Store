@@ -1,0 +1,25 @@
+#In this SQL, I have used this from my freelancing opportunities and have this query that calculate and displays the total sales, average sales, and the number of orders for each customer.
+
+WITH customer_sales AS (
+  SELECT
+    customer_id,
+    SUM(total_amount) AS total_sales,
+    COUNT(order_id) AS order_count
+  FROM orders
+  GROUP BY customer_id
+),
+customer_averages AS (
+  SELECT
+    customer_id,
+    total_sales / order_count AS avg_sale
+  FROM customer_sales
+)
+SELECT
+  customers.customer_name,
+  customer_sales.total_sales,
+  customer_averages.avg_sale,
+  customer_sales.order_count
+FROM customers
+JOIN customer_sales ON customers.customer_id = customer_sales.customer_id
+JOIN customer_averages ON customers.customer_id = customer_averages.customer_id
+ORDER BY total_sales DESC;
