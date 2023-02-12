@@ -1,4 +1,4 @@
-#In this SQL, I have created a querty that uses two CTEs, product_stats and category_stats, to calculate intermediate results and simplify the final query. The result is a table that displays the category, total units sold, total revenue, average price, and average revenue per unit, ordered by total revenue in descending order.
+#In this SQL, I have created a query that uses two CTEs, product_stats and category_stats, to calculate intermediate results and simplify the final query. The result is a table that displays the category, total units sold, total revenue, average price, and average revenue per unit, ordered by total revenue in descending order.
 
 WITH product_stats AS (
   SELECT
